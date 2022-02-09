@@ -10,8 +10,8 @@ jobs:
       - name: dependencies
         working-directory: ./
         run: |
-          chmod +x bin/dependencies.sh
-          ./bin/dependencies.sh
+          install.packages(c('shiny', 'shinythemes', 'shinycssloaders', 'gtrendsR', 'dplyr', 'ggplot2', 'rsconnect'), repos='http://cran.us.r-project.org')
+        shell: Rscript {0}
       - name: publish
         working-directory: ./
         run: |
