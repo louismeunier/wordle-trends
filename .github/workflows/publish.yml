@@ -1,0 +1,17 @@
+on: push
+jobs: 
+  publish_site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: publish
+        working-directory: ./
+        run: |
+          chmod +x bin/publish.sh
+          ./bin/publish.sh
+        env:
+          NAME: ${{ secrets.NAME }}
+          TOKEN: ${{ secrets.TOKEN }}
+          SECRET: ${{ secrets.SECRET }}
