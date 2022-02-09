@@ -1,0 +1,11 @@
+Package: wordle-trends
+Title: wordle-trends
+Version: 1.0.0
+Authors@R: 
+    c(person(given = "Louis",
+             family = "Meunier",
+             role = c("aut", "cre"),
+             email = "louismeunier123@gmail.com"))
+Description: A simple app to analyze the effect of wordle on Google Trends
+Imports: shiny, rsconnect, shinythemes, shinycssloaders, gtrendsR, dplyr, ggplot2
+License: MIT
