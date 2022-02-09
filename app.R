@@ -2,8 +2,6 @@ library('shiny')
 library('shinythemes')
 library('shinycssloaders')
 
-library('rsconnect')
-
 library('gtrendsR')
 library('dplyr')
 library('ggplot2')
