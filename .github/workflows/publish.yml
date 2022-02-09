@@ -15,9 +15,5 @@ jobs:
       - name: publish
         working-directory: ./
         run: |
-          chmod +x bin/publish.sh
-          ./bin/publish.sh
-        env:
-          NAME: ${{ secrets.NAME }}
-          TOKEN: ${{ secrets.TOKEN }}
-          SECRET: ${{ secrets.SECRET }}
+          Rscript -e "rsconnect::setAccountInfo(name='louism79', token=${{secrets.TOKEN}}, secret=${{secrets.SECRET}})"
+          Rscript -e "rsconnect::deployApp(appName = 'wordle-trends')" 
