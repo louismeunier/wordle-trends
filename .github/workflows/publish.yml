@@ -15,5 +15,5 @@ jobs:
       - name: publish
         working-directory: ./
         run: |
-          Rscript -e "rsconnect::setAccountInfo(name='louism79', token=${{secrets.TOKEN}}, secret=${{secrets.SECRET}})"
+          Rscript -e "rsconnect::setAccountInfo(name='louism79', token='${{secrets.TOKEN}}', secret='${{secrets.SECRET}}')"
           Rscript -e "rsconnect::deployApp(appName = 'wordle-trends')" 
