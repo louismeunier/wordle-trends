@@ -4,10 +4,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: r-lib/actions/setup-r@v2
-      - uses: r-lib/actions/setup-r-dependencies@v2
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - name: dependencies
+        working-directory: ./
+        run: |
+          chmod +x bin/dependencies.sh
+          ./bin/dependencies.sh
       - name: publish
         working-directory: ./
         run: |

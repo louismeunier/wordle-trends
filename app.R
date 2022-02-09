@@ -2,6 +2,8 @@ library('shiny')
 library('shinythemes')
 library('shinycssloaders')
 
+library('rsconnect')
+
 library('gtrendsR')
 library('dplyr')
 library('ggplot2')
@@ -32,7 +34,7 @@ ui <- fluidPage(
             hr(),
             p("The graph to the right displays the Google Search trends for a given wordle, with the date that that wordle appeared signified with a dashed line."),
             p("While many words (typically the more common) have no visible correlation with an increase in searches, several more recent and more unusual (ie: 'pleat', 'perky', 'knoll') experienced a significant gain.")
-         ),
+        ),
         mainPanel(
             withSpinner(
                 plotOutput(outputId="distplot"),
