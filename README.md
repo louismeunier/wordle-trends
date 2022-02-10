@@ -9,13 +9,13 @@ Built with R + Shiny.
 The app logic lives at [app.R](app.R). The easiest way to set-up all the dependencies is to run:
 
 ```sh
-    ./bin/dependencies.sh
+./bin/dependencies.sh
 ```
 
 You can then run
 
 ```sh
-    ./bin/serve.sh
+./bin/serve.sh
 ```
 
 to start the development server.
