@@ -31,15 +31,19 @@ ui <- fluidPage(
             ),
             hr(),
             p("The graph to the right displays the Google Search trends for a given wordle, with the date that that wordle appeared signified with a dashed line."),
-            p("While many words (typically the more common) have no visible correlation with an increase in searches, several more recent and more unusual (ie: 'pleat', 'perky', 'knoll') experienced a significant gain.")
+            p("While many words (typically the more common) have no visible correlation with an increase in searches, several more recent and more unusual (ie: 'pleat', 'perky', 'knoll') experienced a significant gain."),
+            hr(),
+            div(
+                img(src="https://cdn-icons-png.flaticon.com/512/25/25231.png", height="18px"),
+                a(href="https://github.com/louismeunier/wordle-trends", "Source Code")
+            )
         ),
         mainPanel(
             withSpinner(
                 plotOutput(outputId="distplot"),
                 type=7,
                 color="#317eac"
-            ),
-            textOutput("test")
+            )
         )
     )
 )
@@ -55,8 +59,6 @@ server <- function(input, output) {
 
         word <- selected_row$word
         date <- selected_row$date
-
-        output$test <- renderText({word})
 
         lower_date <- date - 14
         higher_date <- date + 14
