@@ -104,7 +104,7 @@ server <- function(input, output) {
         ) +
         geom_text(
             aes(
-                x=as.POSIXct.Date(selected_row$date-0.15),
+                x=as.POSIXct.Date(selected_row$date-1.15),
                 y=mean(hits), label=word
             ),
             color="black",
