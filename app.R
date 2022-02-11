@@ -16,7 +16,7 @@ past_x_days_df <- data.frame(
     word = words[0:length(dates_to_now)]
 )
 
-past_x_days_df$format = paste(past_x_days_df$date, past_x_days_df$word, sep=": ")
+past_x_days_df$format = paste(past_x_days_df$date - 1, past_x_days_df$word, sep=": ")
 
 # ui
 ui <- fluidPage(
