@@ -33,6 +33,7 @@ ui <- fluidPage(
             hr(),
             p("The graph to the right displays the Google Search trends for a given wordle, with the date that that wordle appeared signified with a dashed line."),
             p("While many words (typically the more common) have no visible correlation with an increase in searches, several more recent and more unusual (ie: 'pleat', 'perky', 'knoll') experienced a significant gain."),
+            p("The word list is updated every day, and will contain all words up to, but not including, the current day's word."),
             hr(),
             div(
                 img(src="https://cdn-icons-png.flaticon.com/512/25/25231.png", height="18px"),
