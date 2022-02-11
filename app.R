@@ -3,7 +3,6 @@ library('shinythemes')
 library('shinycssloaders')
 
 library('gtrendsR')
-library('dplyr')
 library('ggplot2')
 
 words <- scan("./data/words.txt", character(), quote = "")
