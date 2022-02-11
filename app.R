@@ -6,13 +6,14 @@ library('gtrendsR')
 library('dplyr')
 library('ggplot2')
 
-words <- c("cigar", "rebut", "sissy", "humph", "awake", "blush", "focal", "evade", "naval", "serve", "heath", "dwarf", "model", "karma", "stink", "grade", "quiet", "bench", "abate", "feign", "major", "death", "fresh", "crust", "stool", "colon", "abase", "marry", "react", "batty", "pride", "floss", "helix", "croak", "staff", "paper", "unfed", "whelp", "trawl", "outdo", "adobe", "crazy", "sower", "repay", "digit", "crate", "cluck", "spike", "mimic", "pound", "maxim", "linen", "unmet", "flesh", "booby", "forth", "first", "stand", "belly", "ivory", "seedy", "print", "yearn", "drain", "bribe", "stout", "panel", "crass", "flume", "offal", "agree", "error", "swirl", "argue", "bleed", "delta", "flick", "totem", "wooer", "front", "shrub", "parry", "biome", "lapel", "start", "greet", "goner", "golem", "lusty", "loopy", "round", "audit", "lying", "gamma", "labor", "islet", "civic", "forge", "corny", "moult", "basic", "salad", "agate", "spicy", "spray", "essay", "fjord", "spend", "kebab", "guild", "aback", "motor", "alone", "hatch", "hyper", "thumb", "dowry", "ought", "belch", "dutch", "pilot", "tweed", "comet", "jaunt", "enema", "steed", "abyss", "growl", "fling", "dozen", "boozy", "erode", "world", "gouge", "click", "briar", "great", "altar", "pulpy", "blurt", "coast", "duchy", "groin", "fixer", "group", "rogue", "badly", "smart", "pithy", "gaudy", "chill", "heron", "vodka", "finer", "surer", "radio", "rouge", "perch", "retch", "wrote", "clock", "tilde", "store", "prove", "bring", "solve", "cheat", "grime", "exult", "usher", "epoch", "triad", "break", "rhino", "viral", "conic", "masse", "sonic", "vital", "trace", "using", "peach", "champ", "baton", "brake", "pluck", "craze", "gripe", "weary", "picky", "acute", "ferry", "aside", "tapir", "troll", "unify", "rebus", "boost", "truss", "siege", "tiger", "banal", "slump", "crank", "gorge", "query", "drink", "favor", "abbey", "tangy", "panic", "solar", "shire", "proxy", "point", "robot", "prick", "wince", "crimp", "knoll", "sugar", "whack", "mount", "perky", "could", "wrung", "light", "those", "moist", "shard", "pleat", "aloft", "skill", "elder", "frame")
-first_word_date <- as.Date("2021-06-19")
-latest_word_date <- as.Date("2022-02-08")
+words <- scan("./data/words.txt", character(), quote = "")
+first_word_date <- as.Date("2021-06-19") + 1
+
+dates_to_now <- seq(first_word_date, Sys.Date(), by=1)
 
 past_x_days_df <- data.frame(
-    date = seq(latest_word_date-(length(words)-1), latest_word_date, by=1),
-    word = words
+    date = dates_to_now,
+    word = words[0:length(dates_to_now)]
 )
 
 past_x_days_df$format = paste(past_x_days_df$date, past_x_days_df$word, sep=": ")
@@ -69,7 +70,7 @@ server <- function(input, output) {
         if (Sys.Date() - higher_date < 3) {
             showNotification(
                 "You have a selected a fairly recent word. Trend data may be limited or non-existent.",
-                type='warning'
+                type="warning"
             )
         }
 
@@ -96,7 +97,7 @@ server <- function(input, output) {
             size=1.5
         ) +
         geom_vline(
-            xintercept = as.POSIXct.Date(date),
+            xintercept = as.POSIXct.Date(date-1),
             linetype="dotted", 
             color="black",
             size=1.2
