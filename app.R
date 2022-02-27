@@ -67,7 +67,7 @@ server <- function(input, output) {
         if (higher_date > Sys.Date()) {
             higher_date <- Sys.Date()
         }
-        if (Sys.Date() - higher_date < 3) {
+        if (Sys.Date() - date < 3) {
             showNotification(
                 "You have a selected a fairly recent word. Trend data may be limited or non-existent.",
                 type="warning"
@@ -80,6 +80,7 @@ server <- function(input, output) {
         )
 
         iot <- trend$interest_over_time
+        iot$hits <- as.numeric(iot$hits)
         dates <- iot$date
         hits <- iot$hits
 
